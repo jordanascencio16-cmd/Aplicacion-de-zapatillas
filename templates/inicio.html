@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Zapatillas</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background-color: #0a0a0a;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+    }
+
+    .subtitulo {
+        text-align: center;
+        color: rgba(255,255,255,0.3);
+        letter-spacing: 3px;
+        font-size: 0.8rem;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+    }
+
+    .contenedor {
+        display: flex;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .formulario {
+        flex: 1;
+        background: #111;
+        border: 1px solid #222;
+        border-radius: 15px;
+        padding: 2rem;
+    }
+
+    .reservas_panel {
+        width: 350px;
+        background: #111;
+        border: 1px solid #222;
+        border-radius: 15px;
+        padding: 2rem;
+    }
+
+    .seccion_titulo {
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.3);
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #222;
+        padding-bottom: 0.8rem;
+    }
+
+    .label {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+        margin-bottom: 0.5rem;
+        margin-top: 1.5rem;
+        display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select {
+        width: 100%;
+        background: #1a1a1a;
+        border: 1px solid #333;
+        color: #fff;
+        padding: 0.8rem 1rem;
+        border-radius: 8px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.9rem;
+        outline: none;
+    }
+
+    input:focus, select:focus {
+        border-color: #555;
+    }
+
+    select option {
+        background: #1a1a1a;
+    }
+
+    .marcas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .marca_card {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 10px;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .marca_card:hover {
+        border-color: #555;
+    }
+
+    .marca_card input[type="radio"] {
+        display: none;
+    }
+
+    .marca_card.seleccionada {
+        border-color: #fff;
+        background: #222;
+    }
+
+    .marca_nombre {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 0.3rem;
+    }
+
+    .marca_precio {
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 1px;
+    }
+
+    .modelos {
+        display: none;
+        margin-top: 0.5rem;
+    }
+
+    .modelo_item {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 0.8rem 1rem;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s;
+    }
+
+    .modelo_item:hover {
+        border-color: #555;
+    }
+
+    .modelo_item.seleccionado {
+        border-color: #fff;
+        background: #222;
+    }
+
+    .modelo_item input[type="radio"] {
+        display: none;
+    }
+
+    .modelo_nombre {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .modelo_precio {
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.5);
+    }
+
+    button {
+        width: 100%;
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 1rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 2rem;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s;
+    }
+
+    button:hover {
+        background: #ddd;
+    }
+
+    .reserva_item {
+        background: #1a1a1a;
+        border: 1px solid #222;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .reserva_nombre {
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+    }
+
+    .reserva_detalle {
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 1px;
+        line-height: 1.8rem;
+    }
+
+    .sin_reservas {
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.2);
+        text-align: center;
+        letter-spacing: 2px;
+        margin-top: 2rem;
+    }
+
+    input[type="hidden"] { display: none; }
+</style>
+</head>
+<body>
+
+<h1>Sneaker Store</h1>
+<div class="subtitulo">reserva tus zapatillas</div>
+
+<div class="contenedor">
+
+    <div class="formulario">
+        <form action="/reservar" method="POST">
+
+            <div class="seccion_titulo">Tus datos</div>
+
+            <label class="label">Nombre</label>
+            <input type="text" name="nombre" required>
+
+            <label class="label">Correo</label>
+            <input type="email" name="correo" required>
+
+            <label class="label">Telefono</label>
+            <input type="tel" name="telefono" required>
+
+            <label class="label" style="margin-top: 2rem;">Elige tu marca</label>
+            <div class="marcas">
+
+                <div class="marca_card" onclick="elegirMarca('jordan', this)">
+                    <input type="radio" name="marca_hidden" value="Jordan">
+                    <div class="marca_nombre">JORDAN</div>
+                    <div class="marca_precio">desde $200.000</div>
+                </div>
+
+                <div class="marca_card" onclick="elegirMarca('nike', this)">
+                    <input type="radio" name="marca_hidden" value="Nike">
+                    <div class="marca_nombre">NIKE</div>
+                    <div class="marca_precio">desde $60.000</div>
+                </div>
+
+                <div class="marca_card" onclick="elegirMarca('adidas', this)">
+                    <input type="radio" name="marca_hidden" value="Adidas">
+                    <div class="marca_nombre">ADIDAS</div>
+                    <div class="marca_precio">desde $80.000</div>
+                </div>
+
+                <div class="marca_card" onclick="elegirMarca('puma', this)">
+                    <input type="radio" name="marca_hidden" value="Puma">
+                    <div class="marca_nombre">PUMA</div>
+                    <div class="marca_precio">desde $55.000</div>
+                </div>
+
+            </div>
+
+            <input type="hidden" name="marca" id="marca_valor">
+            <input type="hidden" name="modelo" id="modelo_valor">
+            <input type="hidden" name="precio" id="precio_valor">
+
+            <div id="modelos_jordan" class="modelos">
+                <label class="label">Elige el modelo</label>
+                <div class="modelo_item" onclick="elegirModelo('Air Jordan 1', '200000', this)">
+                    <span class="modelo_nombre">Air Jordan 1</span>
+                    <span class="modelo_precio">$200.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Air Jordan 4', '220000', this)">
+                    <span class="modelo_nombre">Air Jordan 4</span>
+                    <span class="modelo_precio">$220.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Air Jordan 11', '250000', this)">
+                    <span class="modelo_nombre">Air Jordan 11</span>
+                    <span class="modelo_precio">$250.000</span>
+                </div>
+            </div>
+
+            <div id="modelos_nike" class="modelos">
+                <label class="label">Elige el modelo</label>
+                <div class="modelo_item" onclick="elegirModelo('Nike Revolution', '60000', this)">
+                    <span class="modelo_nombre">Nike Revolution</span>
+                    <span class="modelo_precio">$60.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Nike Air Max', '120000', this)">
+                    <span class="modelo_nombre">Nike Air Max</span>
+                    <span class="modelo_precio">$120.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Nike Dunk Low', '95000', this)">
+                    <span class="modelo_nombre">Nike Dunk Low</span>
+                    <span class="modelo_precio">$95.000</span>
+                </div>
+            </div>
+
+            <div id="modelos_adidas" class="modelos">
+                <label class="label">Elige el modelo</label>
+                <div class="modelo_item" onclick="elegirModelo('Adidas Superstar', '80000', this)">
+                    <span class="modelo_nombre">Adidas Superstar</span>
+                    <span class="modelo_precio">$80.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Adidas Ultra Boost', '150000', this)">
+                    <span class="modelo_nombre">Adidas Ultra Boost</span>
+                    <span class="modelo_precio">$150.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Adidas Forum', '110000', this)">
+                    <span class="modelo_nombre">Adidas Forum</span>
+                    <span class="modelo_precio">$110.000</span>
+                </div>
+            </div>
+
+            <div id="modelos_puma" class="modelos">
+                <label class="label">Elige el modelo</label>
+                <div class="modelo_item" onclick="elegirModelo('Puma Suede', '55000', this)">
+                    <span class="modelo_nombre">Puma Suede</span>
+                    <span class="modelo_precio">$55.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Puma RS-X', '75000', this)">
+                    <span class="modelo_nombre">Puma RS-X</span>
+                    <span class="modelo_precio">$75.000</span>
+                </div>
+                <div class="modelo_item" onclick="elegirModelo('Puma Future Rider', '65000', this)">
+                    <span class="modelo_nombre">Puma Future Rider</span>
+                    <span class="modelo_precio">$65.000</span>
+                </div>
+            </div>
+
+            <label class="label">Talla</label>
+            <select name="talla">
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+            </select>
+
+            <button type="submit">Reservar</button>
+
+        </form>
+    </div>
+
+    <div class="reservas_panel">
+        <div class="seccion_titulo">Reservas guardadas</div>
+        {% if reservas %}
+            {% for r in reservas %}
+            <div class="reserva_item">
+                <div class="reserva_nombre">{{ r[0] }}</div>
+                <div class="reserva_detalle">
+                    {{ r[3] }} - {{ r[4] }}<br>
+                    Talla {{ r[5] }}<br>
+                    ${{ r[6] }}<br>
+                    {{ r[1] }}<br>
+                    {{ r[2] }}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="sin_reservas">sin reservas aun</div>
+        {% endif %}
+    </div>
+
+</div>
+
+<script>
+    function elegirMarca(marca, elemento) {
+        document.querySelectorAll('.marca_card').forEach(c => c.classList.remove('seleccionada'));
+        elemento.classList.add('seleccionada');
+        document.querySelectorAll('.modelos').forEach(m => m.style.display = 'none');
+        document.getElementById('modelos_' + marca).style.display = 'block';
+        document.getElementById('marca_valor').value = elemento.querySelector('.marca_nombre').innerText;
+        document.getElementById('modelo_valor').value = '';
+        document.getElementById('precio_valor').value = '';
+    }
+
+    function elegirModelo(modelo, precio, elemento) {
+        document.querySelectorAll('.modelo_item').forEach(m => m.classList.remove('seleccionado'));
+        elemento.classList.add('seleccionado');
+        document.getElementById('modelo_valor').value = modelo;
+        document.getElementById('precio_valor').value = precio;
+    }
+</script>
+</body>
+</html>

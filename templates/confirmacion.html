@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Confirmacion</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        background-color: #0a0a0a;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .caja {
+        max-width: 500px;
+        margin: 3rem auto;
+        background: #111;
+        border: 1px solid #222;
+        border-radius: 15px;
+        padding: 3rem;
+    }
+
+    .check {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        color: rgba(255,255,255,0.8);
+    }
+
+    .detalle {
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 2px;
+        line-height: 2.2rem;
+        margin-bottom: 2rem;
+        text-align: left;
+    }
+
+    .detalle span {
+        color: #fff;
+        float: right;
+    }
+
+    .linea {
+        border: none;
+        border-top: 1px solid #222;
+        margin: 1.5rem 0;
+    }
+
+    .total {
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+    }
+
+    a {
+        display: inline-block;
+        background: #fff;
+        color: #000;
+        padding: 0.8rem 2.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        transition: all 0.3s;
+    }
+
+    a:hover {
+        background: #ddd;
+    }
+</style>
+</head>
+<body>
+<div class="caja">
+    <div class="check">✅</div>
+    <h1>Reserva confirmada</h1>
+    <div class="detalle">
+        <div>Nombre <span>{{ nombre }}</span></div>
+        <div>Marca <span>{{ marca }}</span></div>
+        <div>Modelo <span>{{ modelo }}</span></div>
+        <div>Talla <span>{{ talla }}</span></div>
+    </div>
+    <hr class="linea">
+    <div class="total">
+        <span>Total</span>
+        <span>${{ precio }}</span>
+    </div>
+    <a href="/">Nueva reserva</a>
+</div>
+</body>
+</html>
